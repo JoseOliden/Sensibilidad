@@ -46,7 +46,7 @@ try:
     st.write(f"**Valor calculado de la fórmula:** y = {y_val:.6f}")
 
     u_y_squared = 0
-    resultados = []
+    contribuciones = []
 
     for v in variables:
         var_name = str(v)
@@ -54,24 +54,30 @@ try:
         sensibilidad = float(derivada.evalf(subs=valores))
         u_i = incertidumbres[var_name]
         contrib = (sensibilidad * u_i)**2
-        rel = u_i / valores[var_name]
-        u_y_squared += contrib
-        resultados.append({
+        u_rel_i = u_i / valores[var_name] if valores[var_name] != 0 else np.nan
+
+        contribuciones.append({
             "Variable": var_name,
             "Sensibilidad ∂y/∂x": sensibilidad,
             "Incertidumbre": u_i,
+            "Incertidumbre relativa": u_rel_i,
             "Contribución a u(y)²": contrib,
-            "Incertidumbre relativa": rel
         })
+        u_y_squared += contrib
 
     u_y = np.sqrt(u_y_squared)
     u_rel_y = u_y / y_val if y_val != 0 else np.nan
 
-    st.metric("Incertidumbre combinada u(y)", f"{u_y:.6f}")
-    st.metric("Incertidumbre relativa", f"{u_rel_y:.2%}")
+    # Calcular porcentaje de contribución
+    for c in contribuciones:
+        c["% Contribución"] = 100 * c["Contribución a u(y)²"] / u_y_squared if u_y_squared > 0 else np.nan
 
-    st.subheader("📊 Contribución de cada variable")
-    st.dataframe(resultados, use_container_width=True)
+    # Mostrar resultados
+    st.metric("Incertidumbre combinada u(y)", f"{u_y:.6f}")
+    st.metric("Incertidumbre relativa de y", f"{u_rel_y:.2%}")
+
+    st.subheader("📊 Contribución de cada variable a la incertidumbre")
+    st.dataframe(contribuciones, use_container_width=True)
 
 except Exception as e:
     st.error(f"Ocurrió un error en el cálculo: {e}")
