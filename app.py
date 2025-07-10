@@ -55,7 +55,7 @@ initial_guesses = [0.0]
 par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1], Er_c[1], Q0_c[1], Aesp_c[2], k0_c[2], e_c[2], Er_c[2], Q0_c[2])
 solution = root(equations, x0=initial_guesses, args = par)
 alfa = solution.x
-st.markdown("Valor de alfa: {alfa}")
+st.markdown(f"Valor de alfa: {alfa}")
 
 # Entrada de fórmulas 
 #formula_str = st.text_input("Fórmula", value="A * B / C")
