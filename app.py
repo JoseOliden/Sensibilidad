@@ -26,9 +26,9 @@ incertidumbres = {}
 for var in variables:
     col1, col2 = st.columns(2)
     with col1:
-        valor = st.number_input(f"Valor de {var}", value=1.0, format="%.6f", key=f"{var}_val")
+        valor = st.number_input(f"Valor de {var}", value=1.0, format="%.10f", key=f"{var}_val")
     with col2:
-        incertidumbre = st.number_input(f"Incertidumbre de {var}", value=0.01, format="%.6f", key=f"{var}_err")
+        incertidumbre = st.number_input(f"Incertidumbre de {var}", value=0.01, format="%.10f", key=f"{var}_err")
     valores[str(var)] = valor
     incertidumbres[str(var)] = incertidumbre
 
