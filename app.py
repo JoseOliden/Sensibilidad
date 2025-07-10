@@ -5,11 +5,11 @@ import sympy as sp
 st.set_page_config(page_title="Propagación de Incertidumbre", layout="wide")
 st.title("🧮 Análisis de Incertidumbre en Fórmulas")
 
-st.markdown("Ingrese una fórmula con variables (por ejemplo: `A * B / C`)")
+st.markdown("Calculo de Actividad especidica Au (por ejemplo: `A * B / C`)")
 
 # Entrada de fórmula
-formula_str = st.text_input("Fórmula", value="A * B / C")
-
+#formula_str = st.text_input("Fórmula", value="A * B / C")
+formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)"
 # Extraer variables únicas
 try:
     variables = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
