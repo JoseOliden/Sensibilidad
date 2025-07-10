@@ -28,6 +28,13 @@ def equations(vars, *par):
     Aesp_1,k0_1,e_1,Er_1,Q0_1,Aesp_2,k0_2,e_2,Er_2,Q0_2, Aesp_3,k0_3,e_3,Er_3,Q0_3 = par
     eq1 = ((1-(Aesp_2/Aesp_1)*(k0_1/k0_2)*(e_1/e_2))**(-1) - (1-(Aesp_3/Aesp_1)*(k0_1/k0_3)*(e_1/e_3))**(-1))*(Q0_1 - 0.429)/(Er_1**(alfa)) - ((1-(Aesp_2/Aesp_1)*(k0_1/k0_2)*(e_1/e_2))**(-1))*(Q0_2 - 0.429)/(Er_2**(alfa)) + ((1-(Aesp_3/Aesp_1)*(k0_1/k0_3)*(e_1/e_3))**(-1))*(Q0_3 - 0.429)/(Er_3**(alfa))
     return [eq1]
+def cal_Q0_alfa_i(Q0,Er,alfa,rho):
+  # calcula Q0_alfa del elemento i
+  return (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)
+  #return (Q0-0.429)/(Er)**alfa + 0.429/((2*alfa+1)*0.55**alfa)
+def cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c):
+  # calcula f
+  return ((k0_c[0]/k0_c[1])*(e_c[0]/e_c[1])*Q0_alfa_c[0]  - (Aesp_c[0]/Aesp_c[1])*Q0_alfa_c[1])/(Aesp_c[0]/Aesp_c[1] - (k0_c[0]/k0_c[1])*(e_c[0]/e_c[1]))
 
 # Calculo de Aesp de los comparadores.
 # parametros comparadores
@@ -56,6 +63,14 @@ par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1],
 solution = root(equations, x0=initial_guesses, args = par)
 alfa = solution.x
 st.markdown(f"Valor de alfa: {alfa}")
+
+# calculo de Qo alfa de comparadores
+Q0_alfa_c[0] = cal_Q0_alfa_i(Q0_c[0],Er_c[0],alfa,rho_c[0])
+Q0_alfa_c[1] = cal_Q0_alfa_i(Q0_c[1],Er_c[1],alfa,rho_c[1])
+Q0_alfa_c[2] = cal_Q0_alfa_i(Q0_c[2],Er_c[2],alfa,rho_c[2])
+
+# calculo de f alfa de comparadores
+f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
 
 # Entrada de fórmulas 
 #formula_str = st.text_input("Fórmula", value="A * B / C")
