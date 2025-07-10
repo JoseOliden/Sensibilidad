@@ -16,13 +16,13 @@ def Aesp(Cn_i, w_i,lam,tr,td,ti,tv):# Calcula la actividad específica
   S_i = cal_S(lam, ti)
   return Cn_i*D_i*C_i*H_i/(S_i*w_i) 
 def cal_D(lam, td):# Calcula D del elemento i
-  return exp(lam*td)
+  return np.exp(lam*td)
 def cal_C(lam, tr):# Calcula C del elemento i
   return lam/(1-np.exp(-lam*tr))
 def cal_H(tr,tv):# Calcula H del elemento i
   return tr/tv
 def cal_S(lam,ti):# Calcula S del elemento i
-  return 1-exp(-lam*ti)
+  return 1-np.exp(-lam*ti)
 def equations(vars, *par):
     alfa = vars[0]
     Aesp_1,k0_1,e_1,Er_1,Q0_1,Aesp_2,k0_2,e_2,Er_2,Q0_2, Aesp_3,k0_3,e_3,Er_3,Q0_3 = par
