@@ -5,11 +5,11 @@ import sympy as sp
 st.set_page_config(page_title="Propagación de Incertidumbre", layout="wide")
 st.title("🧮 Análisis de Incertidumbre en Fórmulas")
 
-st.markdown("Calculo de Actividad especidica Au (por ejemplo: `A * B / C`)")
+st.markdown("Calculo de la incertidumbre en la concentración de Co")
 
-# Entrada de fórmula
+# Entrada de fórmulas 
 #formula_str = st.text_input("Fórmula", value="A * B / C")
-formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)"
+formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp de Comparador Au
 # Extraer variables únicas
 try:
     variables = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
@@ -17,11 +17,21 @@ except Exception as e:
     st.error(f"Error al interpretar la fórmula: {e}")
     st.stop()
 
+formula_str1 = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp del elementos Co
+# Extraer variables únicas
+try:
+    variables1 = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
+except Exception as e:
+    st.error(f"Error al interpretar la fórmula: {e}")
+    st.stop()
+
 # Entrada de valores e incertidumbres
-st.subheader("🔢 Valores e Incertidumbres de las Variables")
+st.subheader("🔢 Valores e Incertidumbres de las Variables ")
 
 valores = {}
 incertidumbres = {}
+
+# colocar valores iniciales de las variables.
 
 for var in variables:
     col1, col2 = st.columns(2)
