@@ -39,18 +39,35 @@ def cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c):
 # Calculo de Aesp de los comparadores.
 # parametros comparadores
 # comparadores [Co Au Mo]
+
 k0_c = np.array([1.32, 1.00, 0.0000846])     #
-e_c = np.array([0.0015999456766857, 0.00306420020500841, 0.0160532014949982 ])    #
+e_c = np.array([0.0113, 0.02272, 0.01605])    #
 Q0_c = np.array([2.041, 15.712, 50.365])    #
-Cn_c = np.array([11880, 32416, 40639])    # Area del fotopico
-w_c = np.array([40.83662/1000000, 0.1044/1000000, 2090.99/1000000])     # Masa del radio isotopo o comparador
-rho_c = np.array([1.0, 1.0, 0.973])   #
+Cn_c = np.array([36082, 52346, 39272])    # Area del fotopico
+w_c = np.array([51.573/1000000, 0.1358/1000000, 2088.591/1000000])     # Masa del radio isotopo o comparador
+rho_c = np.array([1.0, 1.0, 1.0])   #
 lam_c = np.array([0.000000004167, 0.000002977, 0.00000292])   #
 Er_c = np.array([136.0, 5.65, 241])   #
-td_c = np.array([15962, 15962, 97299])   # Tiempo de decaimiento del elemento
-tr_c = np.array([57602, 57602, 10000])   # Tiempo de real del elemento
-ti_c = np.array([1800, 1800, 1800])      # Tiempo de irradiación del elemento
-tv_c = np.array([57455, 57455, 9953])    # Tiempo de vivo
+
+
+#k0_c = np.array([1.32, 1.00, 0.0000846])     #
+#e_c = np.array([0.0015999456766857, 0.00306420020500841, 0.0160532014949982 ])    #
+#Q0_c = np.array([2.041, 15.712, 50.365])    #
+#Cn_c = np.array([11880, 32416, 40639])    # Area del fotopico
+#w_c = np.array([40.83662/1000000, 0.1044/1000000, 2090.99/1000000])     # Masa del radio isotopo o comparador
+#rho_c = np.array([1.0, 1.0, 0.973])   #
+#lam_c = np.array([0.000000004167, 0.000002977, 0.00000292])   #
+#Er_c = np.array([136.0, 5.65, 241])   #
+
+td_c = np.array([306314, 306314, 299161])   # Tiempo de decaimiento del elemento
+tr_c = np.array([1500, 1500, 900])          # Tiempo de real del elemento
+ti_c = np.array([10800, 10800, 10800])      # Tiempo de irradiación del elemento
+tv_c = np.array([1478.0, 1478.0, 866.0])    # Tiempo de vivo
+
+#td_c = np.array([15962, 15962, 97299])   # Tiempo de decaimiento del elemento
+#tr_c = np.array([57602, 57602, 10000])   # Tiempo de real del elemento
+#ti_c = np.array([1800, 1800, 1800])      # Tiempo de irradiación del elemento
+#tv_c = np.array([57455, 57455, 9953])    # Tiempo de vivo
 
 Aesp_c = np.zeros(len(k0_c))
 Aesp_c[0] = Aesp(Cn_c[0],w_c[0],lam_c[0],tr_c[0],td_c[0],ti_c[0],tv_c[0])
@@ -62,7 +79,7 @@ initial_guesses = [0.0]
 par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1], Er_c[1], Q0_c[1], Aesp_c[2], k0_c[2], e_c[2], Er_c[2], Q0_c[2])
 solution = root(equations, x0=initial_guesses, args = par)
 alfa = solution.x
-#st.markdown(f"Valor de alfa: {alfa}")
+st.markdown(f"Valor de alfa: {alfa}")
 
 # calculo de Qo alfa de comparadores
 Q0_alfa_c = np.zeros(len(k0_c))
