@@ -30,7 +30,7 @@ def equations(vars, *par):
     return [eq1]
 def cal_Q0_alfa_i(Q0,Er,alfa,rho):
   # calcula Q0_alfa del elemento i
-  return (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)
+  return (Q0-0.429)/(Er*np.exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)
   #return (Q0-0.429)/(Er)**alfa + 0.429/((2*alfa+1)*0.55**alfa)
 def cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c):
   # calcula f
