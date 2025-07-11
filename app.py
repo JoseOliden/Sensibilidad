@@ -102,7 +102,7 @@ f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
 #formula_str = st.text_input("Fórmula", value="A * B / C")
 # C = (Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv*Aesp_Au))*(1/k0)*(e_Au/e)*((f + Q0_alfa_Au)/(f + (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa))) #Concentracion
 #formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp de Comparador Au
-formula_str = "(Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv*Aesp_Au))*(1/k0)*(0.00306420020500841/e)*((f + (15.283/(5.65*exp(-alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)))/(f + (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)))"
+formula_str = "(Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv*20562252179.58065))*(1/k0)*(0.00306420020500841/e)*((f + (15.283/(5.65*exp(-alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)))/(f + (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)))"
 # Extraer variables únicas
 try:
     variables = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
