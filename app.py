@@ -65,7 +65,7 @@ alfa = solution.x
 st.markdown(f"Valor de alfa: {alfa}")
 
 # calculo de Qo alfa de comparadores
-Aesp_c = np.zeros(len(k0_c))
+Q0_alfa_c = np.zeros(len(k0_c))
 Q0_alfa_c[0] = cal_Q0_alfa_i(Q0_c[0],Er_c[0],alfa,rho_c[0])
 Q0_alfa_c[1] = cal_Q0_alfa_i(Q0_c[1],Er_c[1],alfa,rho_c[1])
 Q0_alfa_c[2] = cal_Q0_alfa_i(Q0_c[2],Er_c[2],alfa,rho_c[2])
