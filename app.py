@@ -62,7 +62,7 @@ initial_guesses = [0.0]
 par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1], Er_c[1], Q0_c[1], Aesp_c[2], k0_c[2], e_c[2], Er_c[2], Q0_c[2])
 solution = root(equations, x0=initial_guesses, args = par)
 alfa = solution.x
-st.markdown(f"Valor de alfa: {alfa}")
+#st.markdown(f"Valor de alfa: {alfa}")
 
 # calculo de Qo alfa de comparadores
 Q0_alfa_c = np.zeros(len(k0_c))
@@ -75,22 +75,16 @@ f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
 
 # Entrada de fórmulas 
 #formula_str = st.text_input("Fórmula", value="A * B / C")
-formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp de Comparador Au
+# C = (Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv*Aesp_Au))*(1/k0)*(e_Au/e)*((f + Q0_alfa_Au)/(f + (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa))) #Concentracion
+#formula_str = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp de Comparador Au
+formula_str = "(Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv*Aesp_Au))*(1/k0)*(e_Au/e)*((f + Q0_alfa_Au)/(f + (Q0-0.429)/(Er*exp(-rho*alfa))**alfa + 0.429/((2*alfa+1)*0.55**alfa)))"
 # Extraer variables únicas
 try:
     variables = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
 except Exception as e:
     st.error(f"Error al interpretar la fórmula: {e}")
     st.stop()
-
-formula_str1 = "Cn*exp(-lamb*td)*lamb*tr/((1-exp(-lamb*ti))*(1-exp(-lamb*tr))*w*tv)" # Aesp del elementos Co
-# Extraer variables únicas
-try:
-    variables1 = sorted(list(sp.sympify(formula_str).free_symbols), key=lambda x: str(x))
-except Exception as e:
-    st.error(f"Error al interpretar la fórmula: {e}")
-    st.stop()
-
+  
 # Entrada de valores e incertidumbres
 st.subheader("🔢 Valores e Incertidumbres de las Variables ")
 
