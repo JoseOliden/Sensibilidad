@@ -128,6 +128,7 @@ for var in variables:
         incertidumbre = st.number_input(f"Incertidumbre de {var}", value=0.01, format="%.12f", key=f"{var}_err")
     valores[str(var)] = valor
     incertidumbres[str(var)] = incertidumbre
+    st.markdown(f"Valor de i: {i}")
     i += i
 
 # Cálculo
