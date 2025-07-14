@@ -4,7 +4,7 @@ import sympy as sp
 from scipy.optimize import root # para sistema Ecuaciones no lineales.
 
 st.set_page_config(page_title="Propagación de Incertidumbre", layout="wide")
-st.title("🧮 Análisis de Incertidumbre en Fórmulas")
+st.title("🧮 Análisis de Incertidumbre de la concentraciuón de Co")
 
 st.markdown("Calculo de la incertidumbre en la concentración de Co")
 
