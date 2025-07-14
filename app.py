@@ -117,17 +117,18 @@ valores = {}
 incertidumbres = {}
 
 # colocar valores iniciales de las variables.
-Val_ini = (Cn_i, Er_i, Q0_i, alfa, e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
+Val_ini = (Cn_i, Er_i, Q0_i, alfa, e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i)
+u_v_ini = (Cn_i*0.05, Er_i*0.05, Q0_i*0.05, alfa*0.05, e_i*0.05, k0_i*0.05, lam_i*0.05, rho_i*0.05, td_i*0.05, ti_i*0.05, tr_i*0.05, tv_i*0.05, w_i*0.05) 
+
 i = 0
 for var in variables:
     col1, col2 = st.columns(2)
     with col1:
         valor = st.number_input(f"Valor de {var}", value=Val_ini[i], format="%.12f", key=f"{var}_val")
     with col2:
-        incertidumbre = st.number_input(f"Incertidumbre de {var}", value=0.01, format="%.12f", key=f"{var}_err")
+        incertidumbre = st.number_input(f"Incertidumbre de {var}", value=u_v_ini[i], format="%.12f", key=f"{var}_err")
     valores[str(var)] = valor
     incertidumbres[str(var)] = incertidumbre
-    st.markdown(f"Valor de i: {i}")
     i = i + 1
 
 # Cálculo
