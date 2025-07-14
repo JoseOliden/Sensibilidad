@@ -86,7 +86,7 @@ st.markdown(f"Valor de Aesp_3: {Aesp_c[2]}")
 initial_guesses = [0.0]
 par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1], Er_c[1], Q0_c[1], Aesp_c[2], k0_c[2], e_c[2], Er_c[2], Q0_c[2])
 solution = root(equations, x0=initial_guesses, args = par)
-alfa = solution.x[:]
+alfa = float(solution.x)
 st.markdown(f"Valor de alfa: {alfa}")
 
 # calculo de Qo alfa de comparadores
@@ -117,7 +117,7 @@ valores = {}
 incertidumbres = {}
 
 # colocar valores iniciales de las variables.
-Val_ini = (Cn_i, Er_i, Q0_i, number(alfa), e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
+Val_ini = (Cn_i, Er_i, Q0_i, alfa, e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
 i = 0
 for var in variables:
     col1, col2 = st.columns(2)
