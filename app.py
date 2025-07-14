@@ -77,9 +77,9 @@ Aesp_c[0] = Aesp(Cn_c[0],w_c[0],lam_c[0],tr_c[0],td_c[0],ti_c[0],tv_c[0])
 Aesp_c[1] = Aesp(Cn_c[1],w_c[1],lam_c[1],tr_c[1],td_c[1],ti_c[1],tv_c[1])
 Aesp_c[2] = Aesp(Cn_c[2],w_c[2],lam_c[2],tr_c[2],td_c[2],ti_c[2],tv_c[2])
 
-st.markdown(f"Valor de Aesp_1: {Aesp_c[0]}")
-st.markdown(f"Valor de Aesp_2: {Aesp_c[1]}")
-st.markdown(f"Valor de Aesp_3: {Aesp_c[2]}")
+# st.markdown(f"Valor de Aesp_1: {Aesp_c[0]}")
+# st.markdown(f"Valor de Aesp_2: {Aesp_c[1]}")
+# st.markdown(f"Valor de Aesp_3: {Aesp_c[2]}")
 
 
 # Calculo de alfa 
