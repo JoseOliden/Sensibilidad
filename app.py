@@ -117,7 +117,7 @@ valores = {}
 incertidumbres = {}
 
 # colocar valores iniciales de las variables.
-Val_ini = (Cn_i, Er_i, Q0_i, alfa.value(), e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
+Val_ini = (Cn_i, Er_i, Q0_i, number(alfa), e_i, k0_i, lam_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
 i = 0
 for var in variables:
     col1, col2 = st.columns(2)
