@@ -129,7 +129,7 @@ for var in variables:
     valores[str(var)] = valor
     incertidumbres[str(var)] = incertidumbre
     st.markdown(f"Valor de i: {i}")
-    i += i
+    i = i + 1
 
 # Cálculo
 try:
