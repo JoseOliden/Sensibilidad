@@ -71,8 +71,6 @@ tr_i = 1500.0      # Tiempo de real del elemento
 ti_i = 10800.0      # Tiempo de irradiación del elemento
 tv_i = 1478.0      # Tiempo de vivo
 
-Val_ini = (Cn_i, Er_i, Q0_i, alfa.value(), e_i, k0_i, lamb_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
-
 # Calculo de Aesp de los comparadores.
 Aesp_c = np.zeros(len(k0_c))
 Aesp_c[0] = Aesp(Cn_c[0],w_c[0],lam_c[0],tr_c[0],td_c[0],ti_c[0],tv_c[0])
@@ -119,6 +117,8 @@ valores = {}
 incertidumbres = {}
 
 # colocar valores iniciales de las variables.
+Val_ini = (Cn_i, Er_i, Q0_i, alfa.value(), e_i, k0_i, lamb_i, rho_i, td_i, ti_i, tr_i, tv_i, w_i) 
+
 i = 0
 for var in variables:
     col1, col2 = st.columns(2)
